@@ -1,0 +1,18 @@
+﻿<Window x:Class="tryLINQ.Forms.listEntities"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tryLINQ.Forms"
+        mc:Ignorable="d"
+        Title="List entities" Height="459.31" Width="800"
+        WindowStartupLocation="CenterScreen" Icon="icon.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="175*"></RowDefinition>
+            <RowDefinition Height="39*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Name="back" Content="Came back" HorizontalAlignment="Center" Height="42" Margin="278,10,290,0" VerticalAlignment="Top" Width="224" FontSize="20" Click="back_Click" Grid.Row="1"/>
+        <DataGrid Name="list" Background="#FFEAE9E9" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+    </Grid>
+</Window>

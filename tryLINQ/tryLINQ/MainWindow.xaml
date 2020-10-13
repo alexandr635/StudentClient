@@ -1,0 +1,15 @@
+﻿<Window x:Class="tryLINQ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tryLINQ"
+        mc:Ignorable="d"
+        Title="Students" Height="353.793" Width="370.172"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="icon.png">
+    <Grid>
+        <Button Name="list" Content="List entities" HorizontalAlignment="Left" Height="45" Margin="96,79,0,0" VerticalAlignment="Top" Width="159" Click="list_Click" FontSize="20"/>
+        <Button Name="create" Content="Create entities" HorizontalAlignment="Left" Height="45" Margin="96,153,0,0" VerticalAlignment="Top" Width="159" FontSize="20" Click="create_Click"/>
+        <Button Name="change" Content="Change entities" HorizontalAlignment="Left" Height="45" Margin="96,226,0,0" VerticalAlignment="Top" Width="159" FontSize="20" Click="change_Click"/>
+    </Grid>
+</Window>
