@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,15 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Forms\changeEntities.xaml">
+    <Page Include="Forms\ChangeEntities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\createEntities.xaml">
+    <Page Include="Forms\CreateEntities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\listEntities.xaml">
+    <Page Include="Forms\ListEntities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,14 +77,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Pers.cs" />
-    <Compile Include="Forms\changeEntities.xaml.cs">
-      <DependentUpon>changeEntities.xaml</DependentUpon>
+    <Compile Include="Db\QueryDb.cs" />
+    <Compile Include="Forms\ChangeEntities.xaml.cs">
+      <DependentUpon>ChangeEntities.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\createEntities.xaml.cs">
-      <DependentUpon>createEntities.xaml</DependentUpon>
+    <Compile Include="Forms\CreateEntities.xaml.cs">
+      <DependentUpon>CreateEntities.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\listEntities.xaml.cs">
-      <DependentUpon>listEntities.xaml</DependentUpon>
+    <Compile Include="Forms\ListEntities.xaml.cs">
+      <DependentUpon>ListEntities.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

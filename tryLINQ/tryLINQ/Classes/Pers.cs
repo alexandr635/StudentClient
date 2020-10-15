@@ -1,6 +1,6 @@
 ﻿namespace tryLINQ.Classes
 {
-    class Pers
+    public class Pers
     {
         public int id { set; get; }
         public string name { set; get; }
@@ -18,5 +18,6 @@
             this.language = language;
             this.age = age;
         }
+        public Pers(){}
     }
 }
