@@ -1,60 +1,42 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows;
+using tryLINQ.Db;
 
 namespace tryLINQ.Forms
 {
     /// <summary>
     /// Interaction logic for createEntities.xaml
     /// </summary>
-    public partial class createEntities : Window
+    public partial class CreateEntities : Window
     {
-        public createEntities()
+        public CreateEntities()
         {
             InitializeComponent();
         }
 
-        private void create_Click(object sender, RoutedEventArgs e)
+        private void Create_Click(object sender, RoutedEventArgs e)
         {
             if (name.Text != "" && lastName.Text != "" && age.Text != "" && phone.Text != "" && language.Text != "")
             {
-                int variable;
-                SqlConnection connect = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=myDb; Integrated Security=True");
                 try
                 {
-                    connect.Open();
-                    SqlCommand command = new SqlCommand();
-                    try
-                    {
-                        variable = Convert.ToInt32(age.Text);
-                        command.CommandText = $"INSERT INTO student (name, last_name, age, phone, language) " +
-                                              $"VALUES('{name.Text}', '{lastName.Text}', {variable}, '{phone.Text}', '{language.Text}')";
-                        command.Connection = connect;
-
-                        int number = command.ExecuteNonQuery();
-                        MessageBox.Show("Student add!");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("You entered wrong AGE!\r\nEnter number!", "Exception");
-                        age.Text = "";
-                    }
-
+                    int agePers = Convert.ToInt32(age.Text);
+                    QueryDb query = new QueryDb();
+                    bool result = query.CreateAndUpdatePers($"INSERT INTO student (name, last_name, age, phone, language) " +
+                                              $"VALUES('{name.Text}', '{lastName.Text}', {agePers}, '{phone.Text}', '{language.Text}')");
+                    if (result == true)
+                        MessageBox.Show("Student added!");
                 }
-                catch (SqlException ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    connect.Close();
+                    MessageBox.Show("You entered wrong AGE!\r\nEnter number!", "Exception");
                 }
             }
             else
-                MessageBox.Show("Введены не все данные!");
+                MessageBox.Show("Not all data entered!");
         }
 
-        private void back_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
             Close();
