@@ -21,9 +21,9 @@ namespace tryLINQ.Forms
                 try
                 {
                     int agePers = Convert.ToInt32(age.Text);
-                    QueryDb query = new QueryDb();
-                    bool result = query.CreateAndUpdatePers($"INSERT INTO student (name, last_name, age, phone, language) " +
-                                              $"VALUES('{name.Text}', '{lastName.Text}', {agePers}, '{phone.Text}', '{language.Text}')");
+                    StudentQueryDb query = new StudentQueryDb();
+                    string[] studentCharacteristics = new string[5]{name.Text, lastName.Text, age.Text, phone.Text, language.Text };
+                    bool result = query.CreatePers(studentCharacteristics);
                     if (result == true)
                         MessageBox.Show("Student added!");
                 }

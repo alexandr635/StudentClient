@@ -7,11 +7,11 @@ using System.Windows;
 
 namespace tryLINQ.Db
 {
-    public class QueryDb
+    public class StudentQueryDb
     {
         string connectionString = ConfigurationManager.ConnectionStrings["MsSqlConnect"].ToString();
 
-        public List<Pers> SelectPers(string query)
+        public List<Pers> SelectPers()
         {
             List<Pers> listPersons = new List<Pers>();
             SqlConnection connect = new SqlConnection(connectionString);
@@ -19,7 +19,7 @@ namespace tryLINQ.Db
             {
                 connect.Open();
                 SqlCommand command = new SqlCommand();
-                command.CommandText = query; 
+                command.CommandText = "SELECT * FROM student"; 
                 command.Connection = connect;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
@@ -51,7 +51,7 @@ namespace tryLINQ.Db
             
             return listPersons;
         }
-        public bool CreateAndUpdatePers(string query)
+        public bool CreatePers(string[] fields)
         {
             bool result = false;
             SqlConnection connect = new SqlConnection(connectionString);
@@ -59,7 +59,40 @@ namespace tryLINQ.Db
             {
                 connect.Open();
                 SqlCommand command = new SqlCommand();
-                command.CommandText = query;
+                command.CommandText = $"INSERT INTO student (name, last_name, age, phone, language) " +
+                                      $"VALUES('{fields[0]}', '{fields[1]}', {Convert.ToInt32(fields[2])}, '{fields[3]}', '{fields[4]}')";
+                command.Connection = connect;
+                try
+                {
+                    command.ExecuteNonQuery();
+                    result = true;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Invalid string length\r\n{ex.Message}", "Exception");
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Exception");
+            }
+            finally
+            {
+                connect.Close();
+            }
+            return result;
+        }
+        public bool UpdatePers(string[] fields)
+        {
+            bool result = false;
+            SqlConnection connect = new SqlConnection(connectionString);
+            try
+            {
+                connect.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandText = $"UPDATE student SET name='{fields[0]}', last_name='{fields[1]}', age={fields[2]}, " +
+                                                         $"phone='{fields[3]}', language='{fields[4]}' " +
+                                                     $"WHERE id={Convert.ToInt32(fields[5])}";
                 command.Connection = connect;
                 try
                 {

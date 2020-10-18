@@ -20,8 +20,8 @@ namespace tryLINQ
             Close();
             window.Show();
 
-            QueryDb query = new QueryDb();
-            window.list.ItemsSource = query.SelectPers("SELECT * FROM student");
+            StudentQueryDb query = new StudentQueryDb();
+            window.list.ItemsSource = query.SelectPers();
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

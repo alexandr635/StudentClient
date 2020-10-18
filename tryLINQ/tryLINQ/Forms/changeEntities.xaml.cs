@@ -28,11 +28,9 @@ namespace tryLINQ.Forms
                 try
                 {
                     int agePers = Convert.ToInt32(age.Text);
-                    QueryDb query = new QueryDb();
-                    bool result = query.CreateAndUpdatePers($"UPDATE student " +
-                                                            $"SET name='{name.Text}', last_name='{lastName.Text}', age={agePers}, " +
-                                                            $"phone='{phone.Text}', language='{language.Text}'" +
-                                                            $" WHERE id={id.Content}");
+                    StudentQueryDb query = new StudentQueryDb();
+                    string[] updateData = new string[6] {name.Text, lastName.Text, age.Text, phone.Text, language.Text, id.Content.ToString() };
+                    bool result = query.UpdatePers(updateData);
                     if (result == true)
                         MessageBox.Show("Student updated!");
                 }
